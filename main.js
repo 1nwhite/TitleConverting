@@ -9,53 +9,85 @@ let copyBtn = document.querySelector('.converting-block-body-btn__copy');
 
 button.addEventListener('click', function(){
 
-	let sourceStr = prompt('','');
+	let titleRow = prompt('','').split();
 
-	outputOne.innerText = sourceStr;
+	outputOne.innerText = titleRow;
 
-	function makeUrl(str) {
-	  let arr = sourceStr.split("").filter(deleteQuestionMark).filter(deleteTwoDots).filter(deleteDot).filter(deleteLine).join("").trim().toLowerCase().split(' ').join('-');
+	function deleteSymbols(element) {
 
-	 function deleteQuestionMark(value) {
-	   return value !== '?'
-	 }
+	const rules = [
+		".",
+		",",
+		"!",
+		"/",
+		"'",
+		"?",
+		":",
+		"(",
+		")",
+		`"`,
+		`'`,
+		"_",
+		"`",
+		"\\",
+		"-"
+	];
 
-	 function deleteTwoDots(value) {
-	   return value !== ':'
-	 }
+	for (let j = 0; j < rules.length; j++) {
+	    if (element === rules[j]) {
+	      return false;
+	    }
+	  }
 
-	 function deleteDot(value) {
-	   return value !== "'"
-	 }
+  	return true;
 
-	 function deleteLine(value) {
-	   return value !== "-"
-	 }
-
-	  return arr;
 	}
 
-	function doubleLine(value) {
-	 	for(let i = 0; i <= value.length; i++) {
+let res = sourcearray.filter(some).join("");
 
-	 		for(let j = i+1; j <= value.length; j++) {
+	// function makeUrl(str) {
+	//   let arr = sourceStr.split("").filter(deleteQuestionMark).filter(deleteTwoDots).filter(deleteDot).filter(deleteLine).join("").trim().toLowerCase().split(' ').join('-');
 
-	 			if(value[i] === '-' && value[j] === '-') {
+	//  function deleteQuestionMark(value) {
+	//    return value !== '?'
+	//  }
 
-	 				value[j] = '';
+	//  function deleteTwoDots(value) {
+	//    return value !== ':'
+	//  }
 
-	 			}
-	 		}
-	 	 return value;
-	 	}
-	 }
+	//  function deleteDot(value) {
+	//    return value !== "'"
+	//  }
+
+	//  function deleteLine(value) {
+	//    return value !== "-"
+	//  }
+
+	//   return arr;
+	// }
+
+	// function doubleLine(value) {
+	//  	for(let i = 0; i <= value.length; i++) {
+
+	//  		for(let j = i+1; j <= value.length; j++) {
+
+	//  			if(value[i] === '-' && value[j] === '-') {
+
+	//  				value[j] = '';
+
+	//  			}
+	//  		}
+	//  	 return value;
+	//  	}
+	//  }
 
 
-	let result = makeUrl(sourceStr);
+	// let result = makeUrl(sourceStr);
 
-	doubleLine(result);
+	// doubleLine(result);
 
-	outputTwo.innerText = result;
+	// outputTwo.innerText = result;
 })
 
 copyBtn.addEventListener('click', function() {
@@ -72,4 +104,3 @@ copyBtn.addEventListener('click', function() {
 
 	// window.getSelection().removeAllRanges();
 })
-
