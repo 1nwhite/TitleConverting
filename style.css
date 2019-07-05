@@ -2,8 +2,7 @@ body {
 	background-color: #fffff0;
 	font-family: 'Poppins', sans-serif;
 	background: url(img/bg.jpg) no-repeat center / cover;
-	/*-webkit-background-size: 90%;*/
-	/*background-size: 90%;*/
+	overflow: hidden;
 }
 html {
 	font-size: 16px;
@@ -16,7 +15,7 @@ html {
 	display: -ms-flex;
 	display: -o-flex;
 	display: flex;
-	height: 90vh;
+	height: 100vh;
 	align-items: center;
 }
 .converting-block {
