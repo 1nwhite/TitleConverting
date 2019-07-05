@@ -9,7 +9,7 @@ let copyBtn = document.querySelector('.converting-block-body-btn__copy');
 
 button.addEventListener('click', function(){
 
-	let titleRow = prompt('','').split();
+	let titleRow = prompt('Insert Title','').toLowerCase().trim();
 
 	outputOne.innerText = titleRow;
 
@@ -30,7 +30,8 @@ button.addEventListener('click', function(){
 			"_",
 			"`",
 			"\\",
-			"-"
+			"{",
+			"}"
 		];
 
 		for (let j = 0; j < rules.length; j++) {
@@ -39,87 +40,52 @@ button.addEventListener('click', function(){
 		    }
 		  }
 
-  	return true;
+		return true;
 
 	}
 
-let deleteSymbolsResult = titleRow.filter(deleteSymbols);
+	let deleteSymbolsResult = titleRow.split('').filter(deleteSymbols);
 
-function checkDash(element) {
+	function replaceSpace(array) {
 
 	let newRow = [];
 
-	for (let i = 0; i < element.length; i++) {
+	for (let i = 0; i < array.length; i++) {
 
-    if (element[i] === "-" && element[i+1] === "-") {
-      continue;
-
-    }
-    newRow.push(element[i])
+	    if (array[i] === " ") {
+	    	newRow.push('-')
+	    }else{
+	    	newRow.push(array[i])
+	    }
+	    
 	}
 	return newRow;
-}
-
-let checkDashResult = checkDash(deleteSymbolsResult).join("");
-
-outputTwo.innerText = checkDashResult;
-
-	// function makeUrl(str) {
-	//   let arr = sourceStr.split("").filter(deleteQuestionMark).filter(deleteTwoDots).filter(deleteDot).filter(deleteLine).join("").trim().toLowerCase().split(' ').join('-');
-
-	//  function deleteQuestionMark(value) {
-	//    return value !== '?'
-	//  }
-
-	//  function deleteTwoDots(value) {
-	//    return value !== ':'
-	//  }
-
-	//  function deleteDot(value) {
-	//    return value !== "'"
-	//  }
-
-	//  function deleteLine(value) {
-	//    return value !== "-"
-	//  }
-
-	//   return arr;
-	// }
-
-	// function doubleLine(value) {
-	//  	for(let i = 0; i <= value.length; i++) {
-
-	//  		for(let j = i+1; j <= value.length; j++) {
-
-	//  			if(value[i] === '-' && value[j] === '-') {
-
-	//  				value[j] = '';
-
-	//  			}
-	//  		}
-	//  	 return value;
-	//  	}
-	//  }
-
-
-	// let result = makeUrl(sourceStr);
-
-	// doubleLine(result);
-
-	// outputTwo.innerText = result;
-})
-
-copyBtn.addEventListener('click', function() {
-	let range = document.createRange();
-	range.selectNode(outputTwo);
-	window.getSelection().addRange(range);
-
-	try{
-		document.execCommand('copy');
-		// alert(`Copied the text: ${range}`);
-	} catch(err) {
-		console.log("Can't copy")
 	}
 
-	// window.getSelection().removeAllRanges();
+	let resultReplaceSpace = replaceSpace(deleteSymbolsResult);
+
+	function checkDash(array) {
+
+		let newRow = [];
+
+		for (let i = 0; i < array.length; i++) {
+
+	    if (array[i] === "-" && array[i+1] === "-") {
+	      continue;
+
+	    }
+	    newRow.push(array[i])
+		}
+		return newRow;
+	}
+
+	let checkDashResult = checkDash(resultReplaceSpace).join("");
+
+	outputTwo.innerText = checkDashResult;
+
+	copyBtn.addEventListener('click', function() {
+	navigator.clipboard.writeText(checkDashResult)
+	})
+
 })
+
