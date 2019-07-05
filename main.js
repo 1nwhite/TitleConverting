@@ -15,35 +15,54 @@ button.addEventListener('click', function(){
 
 	function deleteSymbols(element) {
 
-	const rules = [
-		".",
-		",",
-		"!",
-		"/",
-		"'",
-		"?",
-		":",
-		"(",
-		")",
-		`"`,
-		`'`,
-		"_",
-		"`",
-		"\\",
-		"-"
-	];
+		const rules = [
+			".",
+			",",
+			"!",
+			"/",
+			"'",
+			"?",
+			":",
+			"(",
+			")",
+			`"`,
+			`'`,
+			"_",
+			"`",
+			"\\",
+			"-"
+		];
 
-	for (let j = 0; j < rules.length; j++) {
-	    if (element === rules[j]) {
-	      return false;
-	    }
-	  }
+		for (let j = 0; j < rules.length; j++) {
+		    if (element === rules[j]) {
+		      return false;
+		    }
+		  }
 
   	return true;
 
 	}
 
-let res = sourcearray.filter(some).join("");
+let deleteSymbolsResult = sourcearray.filter(deleteSymbols);
+
+function checkDash(element) {
+
+	let newRow = [];
+
+	for (let i = 0; i < array.length; i++) {
+
+    if (array[i] === "-" && array[i+1] === "-") {
+      continue;
+
+    }
+    newRow.push(array[i])
+	}
+	return newRow;
+}
+
+let checkDashResult = checkDash(deleteSymbolsResult).join("");
+
+outputTwo.innerText = checkDashResult;
 
 	// function makeUrl(str) {
 	//   let arr = sourceStr.split("").filter(deleteQuestionMark).filter(deleteTwoDots).filter(deleteDot).filter(deleteLine).join("").trim().toLowerCase().split(' ').join('-');
