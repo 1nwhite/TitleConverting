@@ -49,13 +49,13 @@ function checkDash(element) {
 
 	let newRow = [];
 
-	for (let i = 0; i < array.length; i++) {
+	for (let i = 0; i < element.length; i++) {
 
-    if (array[i] === "-" && array[i+1] === "-") {
+    if (element[i] === "-" && element[i+1] === "-") {
       continue;
 
     }
-    newRow.push(array[i])
+    newRow.push(element[i])
 	}
 	return newRow;
 }
