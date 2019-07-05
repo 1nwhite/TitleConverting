@@ -43,7 +43,7 @@ button.addEventListener('click', function(){
 
 	}
 
-let deleteSymbolsResult = sourcearray.filter(deleteSymbols);
+let deleteSymbolsResult = titleRow.filter(deleteSymbols);
 
 function checkDash(element) {
 
