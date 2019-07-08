@@ -197,8 +197,18 @@ ul {
 	background-color: #0000cdab;
 }
 .orange {
-	background-color: #ffa500bd;
+	background: url(img/leopard.jpg);
 }
+.orange .converting-block-body_title {
+	color: orange;
+}
+.orange .converting-block-body_output {
+	border: 1px solid #000;
+}
+.orange .converting-block-body-btn {
+	background: url(img/leo.jpg);
+	border: 1px solid #000;
+} 
 .pink {
 	background-color: #ff69b4c2;
 }
