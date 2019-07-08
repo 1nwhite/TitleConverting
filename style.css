@@ -31,10 +31,13 @@ ul {
 	display: -o-flex;
 	display: flex;
 	position: relative;
+
 }
 
 .converting-block-body {
 	padding: 2rem;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 	/*background: #c7158575;*/
 }
 
@@ -129,7 +132,11 @@ ul {
 	height: 60px;
 	border-radius: 10px;
 	cursor: pointer;
-	transition: all ease 0.5s
+	transition: all ease 0.5s;
+	color: #fffff0;
+	line-height: 3.5rem;
+	text-transform: uppercase;
+	font-weight: 700;
 }
 
 .converting-block-palette-body_link:hover {
@@ -138,20 +145,23 @@ ul {
 
 .converting-block_open-btn {
 	position: absolute;
-	bottom: 3rem;
+	bottom: 2.7rem;
 	right: 170px;
 	width: 2.5rem;
 	height: 2.5rem;
 	border: none;
-	background-color: #ffffff8f;
+	background-color: #fffff0;
 	border-radius: 50%;
 	transition: all ease 0.5s;
 	cursor: pointer;
+	outline: none;
+	opacity: 0.9
 
 }
 .converting-block_open-btn:hover {
 	background-color: #fff;
 	transform: scale(1.2);
+	opacity: 1
 }
 .converting-block_open-btn::before, .converting-block_open-btn::after {
 	content: "";
@@ -178,20 +188,20 @@ ul {
 	
 }
 .red {
-	background-color: red;
+	background-color: #c3002fc9;
 }
 .green {
-	background-color: green;
+	background-color: #2e8b57d6;
 }
 .blue {
-	background-color: blue;
+	background-color: #0000cdab;
 }
 .orange {
-	background-color: orange;
+	background-color: #ffa500bd;
 }
 .pink {
-	background-color: pink;
+	background-color: #ff69b4c2;
 }
-.crimson {
-	background-color: #dc143c;
+.purple {
+	background-color: #32064ac2;
 }
