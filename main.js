@@ -2,6 +2,8 @@ let outputOne = document.querySelector('#converting-block-body_output__one');
 
 let outputTwo = document.querySelector('#converting-block-body_output__two');
 
+let blockBody = document.querySelector('.converting-block-body');
+
 let button = document.querySelector('.converting-block-body-btn');
 
 let copyBtn = document.querySelector('.converting-block-body-btn__copy');
@@ -9,6 +11,8 @@ let copyBtn = document.querySelector('.converting-block-body-btn__copy');
 let openBtn = document.querySelector('.converting-block_open-btn');
 
 let blockPalette = document.querySelector(".converting-block-palette");
+
+let modal = document.querySelector(".converting-block-body-modal");
 
 
 button.addEventListener('click', function(){
@@ -88,7 +92,13 @@ button.addEventListener('click', function(){
 	outputTwo.innerText = checkDashResult;
 
 	copyBtn.addEventListener('click', function() {
-	navigator.clipboard.writeText(checkDashResult)
+		navigator.clipboard.writeText(checkDashResult);
+
+		modal.classList.add("converting-block-body-modal-active");
+
+		setInterval(function(){
+			modal.classList.remove("converting-block-body-modal-active");
+		}, 1500)
 	})
 
 })
@@ -140,5 +150,7 @@ openBtn.addEventListener("click", function() {
 	blockPalette.classList.toggle("palette-active");
 
 	openBtn.classList.toggle("open-btn-active");
+
+	blockBody.classList.toggle("block-body-border")
 
 });

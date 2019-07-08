@@ -43,11 +43,15 @@ ul {
 	padding: 2rem;
 	border-top-left-radius: 10px;
 	border-bottom-left-radius: 10px;
-	/*background: #c7158575;*/
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 	z-index: 2;
 	transition: all ease .5s;
 }
-
+.block-body-border {
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
 .converting-block-body_title {
 	font-size: 4rem;
 	text-transform: uppercase;
@@ -87,6 +91,28 @@ ul {
 	transform: translateX(-6px);
 	border: 1px solid #4169e1;
 	transition: all ease 0.3s;
+	z-index: 99
+}
+
+.converting-block-body-modal {
+	text-transform: uppercase;
+	background-color: #222;
+	color: #fffff0;
+	position: absolute;
+	padding: 0.8rem 1rem; 
+	line-height: 1rem;
+	bottom: 6rem;
+	left: 24rem;
+	border-radius: 10px;
+	letter-spacing: .3rem;
+	transition: all ease 0.5s;
+	transform: translateY(3rem);
+	opacity: 0;
+	z-index: -1;
+}
+.converting-block-body-modal-active {
+	transform: translateY(0);
+	opacity: 1;
 }
 
 .converting-block-body-btn:hover {
@@ -120,7 +146,6 @@ ul {
 .palette-active {
 	opacity: 1;
 	transform: translateX(0);
-	/*z-index: 0;*/
 }
 
 .converting-block-palette-body {
@@ -164,7 +189,7 @@ ul {
 .converting-block_open-btn {
 	position: absolute;
 	top: 1rem;
-	right: 170px;
+	right: 175px;
 	width: 2.5rem;
 	height: 2.5rem;
 	border: none;
