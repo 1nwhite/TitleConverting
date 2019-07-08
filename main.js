@@ -89,3 +89,45 @@ button.addEventListener('click', function(){
 
 })
 
+class Palette {
+  constructor(element) {
+    this.colors = ["red", "green", "blue", "orange", "pink", "crimson"];
+    this.element = element;
+  }
+
+  changeColor() {
+    const { element, colors } = this;
+
+    return ({ target }) => {
+      colors.forEach(color => {
+        element.classList.remove(color);
+      });
+      element.classList.add(target.dataset.color);
+    };
+  }
+
+  addClickEvent() {
+    const buttons = document.querySelectorAll(".converting-block-palette-body_link");
+    buttons.forEach(button => {
+      button.addEventListener("click", this.changeColor());
+    });
+  }
+
+  render(container) {
+    const { colors } = this;
+
+    container.innerHTML = `<ul class="converting-block-palette-body_list">${colors
+      .map(color => {
+        return `<li class="${color} converting-block-palette-body_link" data-color="${color}">${color}</li>`;
+      })
+      .join("")}</ul>`;
+  }
+}
+
+const targetElement = document.querySelector(".converting-block-body");
+const container = document.querySelector(".converting-block-palette-body");
+
+const palette = new Palette(targetElement);
+palette.render(container);
+palette.addClickEvent();
+

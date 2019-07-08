@@ -7,6 +7,10 @@ body {
 html {
 	font-size: 16px;
 }
+ul {
+	margin: 0;
+	padding: 0;
+}
 .container {
 	width: 90%;
 	margin: 0 auto;
@@ -21,11 +25,20 @@ html {
 .converting-block {
 	margin: 0 auto;
 	text-align: center;
-	background: #c7158575;
-	padding: 2rem;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	position: relative;
 }
 
-.converting-block_title {
+.converting-block-body {
+	padding: 2rem;
+	/*background: #c7158575;*/
+}
+
+.converting-block-body_title {
 	font-size: 4rem;
 	text-transform: uppercase;
 	color: #fffff0;
@@ -80,4 +93,105 @@ html {
 	font-size: 1.5rem;
 	margin-top: 3rem;
 	line-height: 0;
+}
+
+.converting-block-palette {
+	background-color: #87ceebcf;
+	width: 10rem;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.converting-block-palette-body {
+	height: 100%;
+	width: 100%;
+	
+}
+
+.converting-block-palette-body_list {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.converting-block-palette-body_link {
+	background-color: #C3002F;
+	flex-basis: 60%;
+	width: 40px;
+	height: 60px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all ease 0.5s
+}
+
+.converting-block-palette-body_link:hover {
+	transform: scale(1.1);
+}
+
+.converting-block_open-btn {
+	position: absolute;
+	bottom: 3rem;
+	right: 170px;
+	width: 2.5rem;
+	height: 2.5rem;
+	border: none;
+	background-color: #ffffff8f;
+	border-radius: 50%;
+	transition: all ease 0.5s;
+	cursor: pointer;
+
+}
+.converting-block_open-btn:hover {
+	background-color: #fff;
+	transform: scale(1.2);
+}
+.converting-block_open-btn::before, .converting-block_open-btn::after {
+	content: "";
+	width: 16px;
+	height: 2px;
+	display: block;
+	background-color: #173eb3;
+	margin: 0 auto;
+	position: absolute;
+	right: 50%;
+	margin-right: -8px;
+	top:50%;
+	margin-top: -1px;
+}
+
+.converting-block_open-btn::before {
+	transform: rotate(35deg);
+	transform-origin: right bottom;
+	
+}
+.converting-block_open-btn::after {
+	transform: rotate(-35deg);
+	transform-origin: right top;
+	
+}
+.red {
+	background-color: red;
+}
+.green {
+	background-color: green;
+}
+.blue {
+	background-color: blue;
+}
+.orange {
+	background-color: orange;
+}
+.pink {
+	background-color: pink;
+}
+.crimson {
+	background-color: #dc143c;
 }
