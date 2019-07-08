@@ -6,6 +6,10 @@ let button = document.querySelector('.converting-block-body-btn');
 
 let copyBtn = document.querySelector('.converting-block-body-btn__copy');
 
+let openBtn = document.querySelector('.converting-block_open-btn');
+
+let blockPalette = document.querySelector(".converting-block-palette");
+
 
 button.addEventListener('click', function(){
 
@@ -91,7 +95,7 @@ button.addEventListener('click', function(){
 
 class Palette {
   constructor(element) {
-    this.colors = ["red", "green", "blue", "orange", "pink", "purple"];
+    this.colors = ["red", "green", "blue", "Yulka", "pink", "purple"];
     this.element = element;
   }
 
@@ -131,3 +135,10 @@ const palette = new Palette(targetElement);
 palette.render(container);
 palette.addClickEvent();
 
+
+openBtn.addEventListener("click", function() {
+	blockPalette.classList.toggle("palette-active");
+
+	openBtn.classList.toggle("open-btn-active");
+
+});
