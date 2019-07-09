@@ -91,7 +91,7 @@ ul {
 	transform: translateX(-6px);
 	border: 1px solid #4169e1;
 	transition: all ease 0.3s;
-	z-index: 99
+	z-index: 2;
 }
 
 .converting-block-body-btn__copy {
@@ -351,23 +351,23 @@ ul {
 
 
 
-.purple {
-	background-color: #32064ac2;
+.Yulya {
+	background-color: #2ddcd2c2;
 }
-.purple .converting-block-body-btn {
-	background-color: #66cdaa;
+.Yulya .converting-block-body-btn {
+	background-color: #000;
 	border: 1px solid #5f9ea0;
 
 }
 
-.purple .converting-block-body_title {
-	text-shadow: -1px 0 #5f9ea0, 0 1px #5f9ea0, 1px 0 #5f9ea0, 0 -1px #5f9ea0;
+.Yulya .converting-block-body_title {
+	color: #000;
 }
 
-.purple .converting-block-body_output {
+.Yulya .converting-block-body_output {
 	border: 1px solid #5f9ea0;
 }
 
-.purple .converting-block-body-btn:hover {
-	background-color: #a7efe4;
+.Yulya .converting-block-body-btn:hover {
+	background-color: #222;
 }

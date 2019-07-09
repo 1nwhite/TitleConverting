@@ -105,7 +105,7 @@ button.addEventListener('click', function(){
 
 class Palette {
   constructor(element) {
-    this.colors = ["red", "green", "blue", "Yulka", "pink", "purple"];
+    this.colors = ["red", "green", "blue", "Yulka", "pink", "Yulya"];
     this.element = element;
   }
 
