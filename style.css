@@ -1,7 +1,7 @@
 body {
 	background-color: #fffff0;
 	font-family: 'Poppins', sans-serif;
-	background: url(img/bg.jpg) no-repeat center / cover;
+	/*background: url(img/bg.jpg) no-repeat center / cover;*/
 	overflow: hidden;
 
 }
@@ -109,7 +109,7 @@ ul {
 	background-color: #4169e1;
 	color: #fffff0;
 	transform: translateX(-6px);
-	border: 1px solid #4169e1;
+	/*border: 1px solid #4169e1;*/
 	transition: all ease 0.3s;
 	z-index: 2;
 }
@@ -199,7 +199,7 @@ ul {
 }
 
 .converting-block-palette-body_link {
-	background-color: #C3002F;
+	/*background-color: #C3002F;*/
 	flex-basis: 60%;
 	width: 40px;
 	height: 60px;
@@ -278,8 +278,13 @@ ul {
 
 .red .converting-block-body-btn {
 	background-color: #ffa500;
-	border: 1px solid #d2691e;
 
+}
+
+.red .converting-block-body-btn:hover {
+	background-color: #ff8400;
+	border-color: #ff8400;
+	
 }
 
 .red .converting-block-body_output {
@@ -289,22 +294,21 @@ ul {
 
 
 
-
-
 .green {
 	background-color: #2e8b57d6;
 }
-
 .green .converting-block-body-btn {
-	background-color: #f4a460;
-	border: 1px solid #d2691e;
+	background-color: #e6053b;
 
 }
-
+.green .converting-block-body-btn:hover {
+	background-color: #cc0434;
+	border-color: #cc0434;
+	
+}
 .green .converting-block-body_output {
-	border: 1px solid #d2691e;
+	border: 1px solid #e6053b;
 }
-
 
 
 
@@ -315,7 +319,6 @@ ul {
 }
 .blue .converting-block-body-btn {
 	background-color: #db7093;
-	border: 1px solid #cd5c5c;
 }
 
 .blue .converting-block-body-btn:hover {
@@ -331,22 +334,14 @@ ul {
 
 
 
-
-
-.Yulka {
-	background: url(img/leopard.jpg);
+.orange {
+	background: #ff8c00c7;
 }
-.Yulka .converting-block-body_title {
-	color: orange;
-	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+.orange .converting-block-body_output {
+	border: 1px solid #4169e1;
 }
-.Yulka .converting-block-body_output {
-	border: 1px solid #000;
-	background-color: #ffffff;
-}
-.Yulka .converting-block-body-btn {
-	background: url(img/leo.jpg);
-	border: 1px solid #000;
+.orange .converting-block-body-btn {
+	/*border: 1px solid #000;*/
 }
 
 
@@ -359,9 +354,12 @@ ul {
 
 .pink .converting-block-body-btn {
 	background-color: #1e90ff;
-	border: 1px solid #191970;
 }
-
+.pink	 .converting-block-body-btn:hover {
+	background-color: #026ed6;
+	border-color: #026ed6;
+	
+}
 .pink .converting-block-body_output {
 	border: 1px solid #191970;
 }
@@ -371,23 +369,18 @@ ul {
 
 
 
-.Yulya {
-	background-color: #2ddcd2c2;
+.purple {
+	background-color: #9932ccd4;
 }
-.Yulya .converting-block-body-btn {
+.purple .converting-block-body-btn {
 	background-color: #000;
-	border: 1px solid #5f9ea0;
 
 }
 
-.Yulya .converting-block-body_title {
-	color: #000;
+.purple .converting-block-body_output {
+	border: 1px solid #000;
 }
 
-.Yulya .converting-block-body_output {
-	border: 1px solid #5f9ea0;
-}
-
-.Yulya .converting-block-body-btn:hover {
+.purple .converting-block-body-btn:hover {
 	background-color: #222;
 }
