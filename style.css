@@ -54,7 +54,6 @@ ul {
 	display: -o-flex;
 	display: flex;
 	position: relative;
-	overflow: hidden;
 	transition: all ease .5s;
 
 }
@@ -164,11 +163,14 @@ ul {
 }
 
 .converting-block-palette {
+	position: absolute;
 	background-color: #87ceebcf;
 	width: 10rem;
+	right: -160px;
+	height: 100%;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
-	transform: translateX(-160px);
+	transform: translateX(-160px);	
 	opacity: 0;
 	transition: all ease 0.5s;
 	z-index: 1;
@@ -219,7 +221,7 @@ ul {
 .converting-block_open-btn {
 	position: absolute;
 	top: 1rem;
-	right: 175px;
+	right: 1rem;
 	width: 2.5rem;
 	height: 2.5rem;
 	border: none;
