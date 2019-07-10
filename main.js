@@ -154,3 +154,51 @@ openBtn.addEventListener("click", function() {
 	blockBody.classList.toggle("block-body-border")
 
 });
+
+
+const API_KEY =
+  "1dbbc08fca66e388519b3006d9f5d90d386cbf29d6d1cd72cc83333117581266";
+const defaultSrc =
+  "https://cdn1-www.dogtime.com/assets/uploads/gallery/pembroke-welsh-corgi-dog-breed-pictures/prance-8.jpg";
+
+function getImage(query) {
+  const url = `https://api.unsplash.com/search/photos?query=${query}&client_id=${API_KEY}`;
+
+  return fetch(url)
+    .then(res => res.json())
+    .then(data => {
+    	const randIdx = getRandomNumber(data.results);
+      const imageUrl = data.results[randIdx].urls.regular;
+      // console.log(data.results[0].urls)
+      // testImage.setAttribute("src", imageUrl);
+      // testImage.style.background = `url(${imageUrl})`;
+      if (imageUrl) {
+      	setBackgroundBody(testImage, imageUrl);	
+      }
+
+      console.log(randIdx)
+      
+      return data;
+    })
+    .catch(err => console.log(err));
+}
+
+const input = document.querySelector(".input");
+const testImage = document.querySelector("body");
+testImage.setAttribute("src", defaultSrc);
+
+input.addEventListener("input", setQuery);
+
+function setQuery(e) {
+  const query = e.target.value || defaultSrc;
+  getImage(query);
+}
+
+function setBackgroundBody(body, imageUrl) {
+	body.style.background = `url(${imageUrl}) no-repeat center / cover`;
+	// body.style.background = `url(${imageUrl})`;
+}
+
+function getRandomNumber(arr) {
+	return Math.floor(Math.random() * arr.length);
+}

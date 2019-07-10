@@ -3,7 +3,14 @@ body {
 	font-family: 'Poppins', sans-serif;
 	background: url(img/bg.jpg) no-repeat center / cover;
 	overflow: hidden;
+
 }
+/*.background-body {
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}*/
 html {
 	font-size: 16px;
 }
@@ -13,6 +20,19 @@ ul {
 }
 .zindex {
 	z-index: 1;
+}
+.input {
+	position: absolute;
+	z-index: 3;
+	border: none;
+	padding: .7rem 1rem;
+	top: 1rem;
+	left: 1rem;
+	border-radius: 10px;
+	outline: none;
+	background-color: #fffff0;
+	text-transform: uppercase;
+	font-weight: 700;
 }
 .container {
 	width: 90%;
@@ -108,8 +128,8 @@ ul {
 	padding: 0.8rem 1rem; 
 	line-height: 1rem;
 	bottom: 4rem;
-	left: 10%;
-	right: 10%;
+	left: 20%;
+	right: 20%;
 	border-radius: 10px;
 	letter-spacing: .3rem;
 	transition: all ease 0.5s;
