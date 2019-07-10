@@ -92,13 +92,26 @@ button.addEventListener('click', function(){
 	outputTwo.innerText = checkDashResult;
 
 	copyBtn.addEventListener('click', function() {
-		navigator.clipboard.writeText(checkDashResult);
 
-		modal.classList.add("converting-block-body-modal-active");
+		if(!!outputTwo.innerText !== false) {
+			// navigator.clipboard.writeText(checkDashResult);
 
-		setInterval(function(){
-			modal.classList.remove("converting-block-body-modal-active");
-		}, 1500)
+			modal.classList.add("converting-block-body-modal-active");
+
+			modal.innerText = "Copied";
+			console.log(modal)
+
+		}else {
+
+			modal.classList.add("converting-block-body-modal-active");
+			modal.innerText = "Nothing to copy";
+
+			console.log(modal)
+		}
+
+		// setTimeout(function(){
+		// 	modal.classList.remove("converting-block-body-modal-active");
+		// }, 1500)
 	})
 
 })
