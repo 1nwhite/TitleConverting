@@ -20,7 +20,7 @@ ul {
 }
 .zindex {
 	z-index: 1;
-}
+}	
 .input {
 	position: absolute;
 	z-index: 3;
@@ -385,4 +385,83 @@ ul {
 
 .purple .converting-block-body-btn:hover {
 	background-color: #222;
+}
+
+
+/*MODAL*/
+.input-modal {
+	position: absolute;
+	z-index: 5;
+	top: 2rem;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0 auto;
+	/*padding: 1rem;*/
+	width: 30rem;
+	height: 15rem;
+	background-color: #fff;
+	border-radius: 10px;
+	border: 1px solid #e3e3e3;
+	-webkit-box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
+	overflow: hidden;
+}
+
+.input-modal-body {
+	padding: 1rem;
+	margin: 0 auto;
+	text-align: center;
+	
+}
+
+.input-modal-body_title {
+	margin: 1rem 0;
+	text-transform: uppercase;
+	color: #000080;
+	font-size: 1.5rem;	
+	line-height: 1.2rem;
+
+}
+
+.input-modal-body_field {
+	width: 90%;
+	padding: 0.8rem 1rem;
+	border: 1px solid #000080;
+	color: #000080;
+	border-radius: 25px;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	font-weight: 700;
+	outline: none;
+}
+
+.button-wrapper {
+	background-color: #efefef;
+	padding: 1.5rem;
+	/*position: relative;*/	
+	text-align: right;
+	
+}
+
+.input-modal_btn {
+	width: 8rem;	
+	padding: 0.7rem 0;
+	text-transform: uppercase;
+	font-weight: 700;
+	border: none;	
+	background-color: #ccc;
+	color: #ffffff;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.input-modal_btn:first-child {
+	margin-right: 0.5rem;
+}
+.input-modal_btn:hover:first-child {
+	background-color: #3cb371;
+}
+.input-modal_btn:hover:last-child {
+	background-color: #dc143c;
 }
