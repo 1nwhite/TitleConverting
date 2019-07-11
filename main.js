@@ -91,30 +91,40 @@ button.addEventListener('click', function(){
 
 	outputTwo.innerText = checkDashResult;
 
-	copyBtn.addEventListener('click', function() {
-
-		if(!!outputTwo.innerText !== false) {
-			// navigator.clipboard.writeText(checkDashResult);
-
-			modal.classList.add("converting-block-body-modal-active");
-
-			modal.innerText = "Copied";
-			console.log(modal)
-
-		}else {
-
-			modal.classList.add("converting-block-body-modal-active");
-			modal.innerText = "Nothing to copy";
-
-			console.log(modal)
-		}
-
-		// setTimeout(function(){
-		// 	modal.classList.remove("converting-block-body-modal-active");
-		// }, 1500)
-	})
-
 })
+
+
+function removeModal() {
+	setTimeout(function(){
+		modal.classList.remove("converting-block-body-modal-active");
+		isModalOpen = false;
+	}, 1500)
+}
+
+let isModalOpen = false;
+
+copyBtn.addEventListener('click', function() {
+	navigator.clipboard.writeText(outputTwo);
+
+	if(!isModalOpen && !!outputTwo.innerText) {
+		modal.classList.add("converting-block-body-modal-active");
+
+		modal.innerText = "Copied";
+
+		isModalOpen = true;
+		removeModal();
+
+	} else {
+
+		modal.classList.add("converting-block-body-modal-active");
+		modal.innerText = "Nothing to copy";
+		removeModal();
+
+		return false;
+	}
+	
+})
+
 
 class Palette {
   constructor(element) {
