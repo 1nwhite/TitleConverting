@@ -18,6 +18,9 @@ ul {
 	margin: 0;
 	padding: 0;
 }
+button:focus {
+	outline: none;
+}
 .zindex {
 	z-index: 1;
 }	
@@ -412,7 +415,7 @@ ul {
 }
 
 .input-modal-actvie {
-	
+	transform: translateY(0);
 }
 
 .input-modal-body {
@@ -459,8 +462,10 @@ ul {
 	border: none;	
 	background-color: #ccc;
 	color: #ffffff;
-	border-radius: 5px;
+	border-radius: 7px;
 	cursor: pointer;
+	transition: all ease 0.4s
+	outline: none;
 }
 .input-modal_btn:first-child {
 	margin-right: 0.5rem;

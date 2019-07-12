@@ -1,27 +1,25 @@
-let outputOne = document.querySelector('#converting-block-body_output__one');
+const outputOne = document.querySelector('#converting-block-body_output__one');
 
-let outputTwo = document.querySelector('#converting-block-body_output__two');
+const outputTwo = document.querySelector('#converting-block-body_output__two');
 
-let blockBody = document.querySelector('.converting-block-body');
+const blockBody = document.querySelector('.converting-block-body');
 
-let button = document.querySelector('.converting-block-body-btn');
+const insertBtn = document.querySelector('.converting-block-body-btn__insert');
 
-let copyBtn = document.querySelector('.converting-block-body-btn__copy');
+const copyBtn = document.querySelector('.converting-block-body-btn__copy');
 
-let openBtn = document.querySelector('.converting-block_open-btn');
+const openBtn = document.querySelector('.converting-block_open-btn');
 
-let blockPalette = document.querySelector(".converting-block-palette");
+const blockPalette = document.querySelector(".converting-block-palette");
 
-let modal = document.querySelector(".converting-block-body-modal");
+const copyModal = document.querySelector(".converting-block-body-modal");
+
+const inputModal = document.querySelector(".input-modal");
+
+const modalInputField = document.querySelector(".input-modal-body_field");
 
 
-button.addEventListener('click', function(){
-
-	let titleRow = prompt('Insert Title','').toLowerCase().trim();
-
-	outputOne.innerText = titleRow;
-
-	function deleteSymbols(element) {
+function deleteSymbols(element) {
 
 		const rules = [
 			".",
@@ -52,9 +50,8 @@ button.addEventListener('click', function(){
 
 	}
 
-	let deleteSymbolsResult = titleRow.split('').filter(deleteSymbols);
 
-	function replaceSpace(array) {
+function replaceSpace(array) {
 
 	let newRow = [];
 
@@ -69,8 +66,6 @@ button.addEventListener('click', function(){
 	}
 	return newRow;
 	}
-
-	let resultReplaceSpace = replaceSpace(deleteSymbolsResult);
 
 	function checkDash(array) {
 
@@ -87,16 +82,37 @@ button.addEventListener('click', function(){
 		return newRow;
 	}
 
-	let checkDashResult = checkDash(resultReplaceSpace).join("");
 
-	outputTwo.innerText = checkDashResult;
+insertBtn.addEventListener('click', function(){
+
+	inputModal.classList.add("input-modal-actvie");
 
 })
 
 
+function getInputValue() {
+
+	console.log(modalInputField.value);
+	let titleRow = modalInputField.value.toLowerCase().trim(); 
+	outputOne.innerText = titleRow;
+
+	let deleteSymbolsResult = titleRow.split('').filter(deleteSymbols);
+	let resultReplaceSpace = replaceSpace(deleteSymbolsResult);
+
+	
+
+	let checkDashResult = checkDash(resultReplaceSpace).join("");
+
+	outputTwo.innerText = checkDashResult;
+
+	hideInputModal();
+	clearInput();
+
+}
+
 function removeModal() {
 	setTimeout(function(){
-		modal.classList.remove("converting-block-body-modal-active");
+		copyModal.classList.remove("converting-block-body-modal-active");
 		isModalOpen = false;
 	}, 1500)
 }
@@ -107,17 +123,17 @@ copyBtn.addEventListener('click', function() {
 	navigator.clipboard.writeText(outputTwo.innerText);
 
 	if(!isModalOpen && !!outputTwo.textContent) {
-		modal.classList.add("converting-block-body-modal-active");
+		copyModal.classList.add("converting-block-body-modal-active");
 
-		modal.innerText = "Copied";
+		copyModal.innerText = "Copied";
 
 		isModalOpen = true;
 		removeModal();
 
 	} else {
 
-		modal.classList.add("converting-block-body-modal-active");
-		modal.innerText = "Nothing to copy";
+		copyModal.classList.add("converting-block-body-modal-active");
+		copyModal.innerText = "Empty";
 		removeModal();
 
 		return false;
@@ -192,9 +208,6 @@ function getImage(query) {
     .then(data => {
     	const randIdx = getRandomNumber(data.results);
       const imageUrl = data.results[randIdx].urls.regular;
-      // console.log(data.results[0].urls)
-      // testImage.setAttribute("src", imageUrl);
-      // testImage.style.background = `url(${imageUrl})`;
       if (imageUrl) {
       	setBackgroundBody(testImage, imageUrl);	
       }
@@ -219,9 +232,26 @@ function setQuery(e) {
 
 function setBackgroundBody(body, imageUrl) {
 	body.style.background = `url(${imageUrl}) no-repeat center / cover`;
-	// body.style.background = `url(${imageUrl})`;
 }
 
 function getRandomNumber(arr) {
 	return Math.floor(Math.random() * arr.length);
+}
+
+
+
+document.querySelector("#input-modal_btn--ok").addEventListener("click", getInputValue);
+
+function hideInputModal() {
+
+	inputModal.classList.remove("input-modal-actvie");
+
+	clearInput();
+}
+
+document.querySelector("#input-modal_btn--cancel").addEventListener("click", hideInputModal);
+
+function clearInput() {
+
+	modalInputField.value = '';
 }
