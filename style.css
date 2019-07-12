@@ -407,6 +407,12 @@ ul {
 	-moz-box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
 	overflow: hidden;
+	transition: all ease 0.5s;
+	transform: translateY(-20rem);
+}
+
+.input-modal-actvie {
+	
 }
 
 .input-modal-body {
