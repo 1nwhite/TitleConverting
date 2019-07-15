@@ -14,7 +14,7 @@ const blockPalette = document.querySelector(".converting-block-palette");
 
 const copyModal = document.querySelector(".converting-block-body-modal");
 
-const inputModal = document.querySelector(".input-modal");
+const inputModal = document.querySelector("#input-modal");
 
 const modalInputField = document.querySelector(".input-modal-body_field");
 
@@ -87,6 +87,8 @@ insertBtn.addEventListener('click', function(){
 
 	inputModal.classList.add("input-modal-actvie");
 
+	modalInputField.focus();
+
 })
 
 
@@ -108,6 +110,33 @@ function getInputValue() {
 	hideInputModal();
 	clearInput();
 
+}
+
+document.querySelector("#input-modal_btn--ok").addEventListener("click", getInputValue);
+
+function hideInputModal() {
+
+	inputModal.classList.remove("input-modal-actvie");
+
+	clearInput();
+}
+
+document.querySelector("#input-modal_btn--cancel").addEventListener("click", hideInputModal);
+
+modalInputField.addEventListener("keydown", function(e) {
+	if(e.keyCode === 27) {
+		hideInputModal()
+	}
+
+	if(e.keyCode === 13) {
+		getInputValue()
+	}
+
+})
+
+function clearInput() {
+
+	modalInputField.value = '';
 }
 
 function removeModal() {
@@ -236,22 +265,4 @@ function setBackgroundBody(body, imageUrl) {
 
 function getRandomNumber(arr) {
 	return Math.floor(Math.random() * arr.length);
-}
-
-
-
-document.querySelector("#input-modal_btn--ok").addEventListener("click", getInputValue);
-
-function hideInputModal() {
-
-	inputModal.classList.remove("input-modal-actvie");
-
-	clearInput();
-}
-
-document.querySelector("#input-modal_btn--cancel").addEventListener("click", hideInputModal);
-
-function clearInput() {
-
-	modalInputField.value = '';
 }

@@ -59,6 +59,7 @@ button:focus {
 	position: relative;
 	transition: all ease .5s;
 
+
 }
 
 .converting-block-body {
@@ -69,6 +70,9 @@ button:focus {
 	border-bottom-right-radius: 10px;
 	z-index: 2;
 	transition: all ease .5s;
+	-webkit-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.75);
 }
 .block-body-border {
 	border-top-right-radius: 0px;
@@ -153,11 +157,9 @@ button:focus {
 .converting-block-body_output {
 	padding: 2rem;
 	background-color: #fffff0;
-	/*width: 90%;*/
 	margin: 0 auto;
 	border-radius: 50px;
 	border: 1px solid #4169e1;
-	/*text-transform: uppercase;*/
 	font-size: 1.5rem;
 	margin-top: 3rem;
 	line-height: 0;
@@ -204,7 +206,6 @@ button:focus {
 }
 
 .converting-block-palette-body_link {
-	/*background-color: #C3002F;*/
 	flex-basis: 60%;
 	width: 40px;
 	height: 60px;
@@ -248,31 +249,72 @@ button:focus {
 	transform: rotate(180deg);
 }
 
-.converting-block_open-btn::before, .converting-block_open-btn::after {
+.converting-block_open-btn span::before, 
+.converting-block_open-btn span::after
+/*.converting-block_open-btn--history-modal span*/ {
 	content: "";
 	width: 16px;
-	height: 2px;
+	height: 3px;
 	display: block;
 	background-color: #173eb3;
 	margin: 0 auto;
 	position: absolute;
 	right: 50%;
-	margin-right: -7px;
+	margin-right: -8px;
 	top:50%;
-	margin-top: -1px;
+	margin-top: -1.5px;
 }
 
-.converting-block_open-btn::before {
-	transform: rotate(40deg);
+
+.converting-block_open-btn span::before {
+	transform: rotate(40deg) translateX(1.5px);
+	transform-origin: right top;
+
+	
+}
+.converting-block_open-btn span::after {
+	transform: rotate(-40deg) translateX(1.5px);
+	transform: ;
 	transform-origin: right bottom;
 	
 }
-.converting-block_open-btn::after {
-	transform: rotate(-40deg);
-	transform-origin: right top;
-	
+
+/*.converting-block_open-btn--history-modal {
+	right: 5rem;
+	transform: rotate(90deg);
 }
 
+.converting-block_open-btn--history-modal span,
+.converting-block_open-btn--history-modal span::before,
+.converting-block_open-btn--history-modal span::after {
+	height: 3px;
+}
+
+.converting-block_open-btn--history-modal span {
+	transform: rotate(90deg);
+	transform-origin: center;
+	width: 8px;
+	margin-right: -5px;
+	
+
+}
+
+.converting-block_open-btn--history-modal span::before {
+	transform: rotate(90deg);
+	transform-origin: left bottom;
+	margin-top: -10px;
+	margin-right: -10px;
+	
+}
+.converting-block_open-btn--history-modal span::after {
+	transform: rotate(-90deg);
+	transform-origin: right bottom;
+	margin-top: -10px;
+	margin-left: -10px;
+	margin-right: -6px;
+	
+}
+*/
 
 
 
@@ -391,8 +433,8 @@ button:focus {
 }
 
 
-/*MODAL*/
-.input-modal {
+/*INPUT-MODAL*/
+.modal {
 	position: absolute;
 	z-index: 5;
 	top: 2rem;
@@ -400,17 +442,20 @@ button:focus {
 	right: 0;
 	bottom: 0;
 	margin: 0 auto;
-	/*padding: 1rem;*/
 	width: 30rem;
 	height: 15rem;
 	background-color: #fff;
 	border-radius: 10px;
 	border: 1px solid #e3e3e3;
-	-webkit-box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: -10px 10px 5px 0px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.75);
 	overflow: hidden;
 	transition: all ease 0.5s;
+	
+}
+
+.input-modal {
 	transform: translateY(-20rem);
 }
 
@@ -425,7 +470,7 @@ button:focus {
 	
 }
 
-.input-modal-body_title {
+.modal_title {
 	margin: 1rem 0;
 	text-transform: uppercase;
 	color: #000080;
@@ -475,4 +520,13 @@ button:focus {
 }
 .input-modal_btn:hover:last-child {
 	background-color: #dc143c;
+}
+
+/*HISTORY-MODAL*/
+.history-modal {
+	top: 20rem;
+	padding: 1rem;
+	text-align: center;
+	opacity: 0;
+
 }
