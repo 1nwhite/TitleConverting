@@ -266,3 +266,6 @@ function setBackgroundBody(body, imageUrl) {
 function getRandomNumber(arr) {
 	return Math.floor(Math.random() * arr.length);
 }
+
+
+

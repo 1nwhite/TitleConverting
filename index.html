@@ -16,9 +16,6 @@
 			<input type="text" class="input" placeholder="Search background" />
 			
 			<div class="converting-block-body red">
-				<!-- <input type="text" class="converting-block-body_input" placeholder="Write a text">
-
-				<button class="converting-block-body-btn">Kyc'</button> -->
 				<h1 class="converting-block-body_title">Title converting</h1>
 
 				<div id="converting-block-body_output__one" class="converting-block-body_output"></div>
@@ -48,8 +45,11 @@
 			</div>
 
 			<button class="converting-block_open-btn converting-block_open-btn--palette-block"><span></span></button>
-			<!-- <button class="converting-block_open-btn converting-block_open-btn--history-modal"><span class="letter"></span></button> -->
-
+			<button class="history-modal-btn" aria-label="history button">
+		        <span class="stroke stroke__left"></span>
+		        <span class="stroke stroke__center"></span>
+		        <span class="stroke stroke__right"></span>
+	      	</button>
 		</div>
 
 		<div class="input-modal modal" id="input-modal">
@@ -67,11 +67,22 @@
 
 		<div id="history-modal" class="history-modal modal">
 			<h3 class="history-modal_title modal_title">Header history</h3>
+
+			<ul class="history-modal_list">
+				<li class="history-modal_row">
+					<h4 class="history-modal_insert-title">10 Best Beaches In</h4>
+					<p class="history-modal_copy-title">10-best-beaches-in-netherlands-to-go-crazy-wild</p>
+					<button class="history-modal_copy-btn "></button>
+				</li>
+				<li class="history-modal_row"></li>
+				<li class="history-modal_row"></li>
+			</ul>
 		</div>
 		<!-- /#history-modal.history-modal -->
 	</div>
 	
 	
-<script src="main.js"></script>
+<script src="js/animation.js" defer></script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
