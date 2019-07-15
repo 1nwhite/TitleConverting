@@ -550,6 +550,7 @@ button:focus {
 /*history-modal-btn-animation*/
 .history-modal-btn {
   display: block;
+  background-color: #fffff0;
   position: absolute;
   z-index: 2;
   top: 1rem;
