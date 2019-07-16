@@ -35,11 +35,15 @@ function deleteSymbols(element) {
 			")",
 			`"`,
 			`'`,
+			"’",
 			"_",
 			"`",
 			"\\",
 			"{",
-			"}"
+			"}",
+			";",
+			"/",
+			"*",
 		];
 
 		for (let j = 0; j < rules.length; j++) {
