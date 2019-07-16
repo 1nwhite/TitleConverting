@@ -21,6 +21,10 @@ ul {
 button:focus {
 	outline: none;
 }
+.disable-click {
+	pointer-events: none;
+}
+
 .zindex {
 	z-index: 1;
 }	

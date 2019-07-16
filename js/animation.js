@@ -3,6 +3,7 @@ const right = document.querySelector(".stroke__right");
 const center = document.querySelector(".stroke__center");
 const historyModal = document.querySelector("#history-modal");
 const historyModalList = document.querySelector(".history-modal_list");
+const historyModalBtn = document.querySelector(".history-modal-btn");
 
 function addAnimations() {
   left.classList.add("stroke__left--animate");
@@ -40,76 +41,58 @@ function removeReverseAnimations() {
   center.classList.remove("stroke__center--animate-reverse");
 }
 
-let isActive = false;
+let isAnimationActive = false;
 
 function animate() {
-  if (!isActive) {
-    isActive = true;
+  if (!isAnimationActive) {
+    historyModalBtn.classList.add("disable-click");
+    isAnimationActive = true;
     addAnimations();
 
     setTimeout(() => {
       addCompletedState();
       removeAnimations();
+      historyModalBtn.classList.remove("disable-click");
     }, 400);
   } else {
     
     addReverseAnimations();
+    isAnimationActive = false;
     setTimeout(() => {
       removeCompletedState();
       removeReverseAnimations();
-      isActive = false;
+      
     }, 400);
   }
 }
 
-document.querySelector(".history-modal-btn").addEventListener("click", openHistoryModal);
+historyModalBtn.addEventListener("click", historyModalHandler);
 
-function openHistoryModal() {
+let isHistoryModalOpen = false;
 
+function historyModalHandler() {
   animate();
-  historyModal.classList.toggle("history-modal-active");
+
+  if(!isHistoryModalOpen) {
+    openHistoryModal();
+  } else {
+    closeHistoryModal();
+  }
 }
 
-let historyData = [
-  {
-    title: "10 Best Beaches In ",
-    text: "10-best-beaches-in-netherlands-to-go-crazy-wild",
-  },
-  {
-    title: "10 Best Beaches In",
-    text: "10-best-beaches-in-netherlands-to-go-crazy-wild",
-  },
-  {
-    title: "10 Best Beaches In",
-    text: "10-best-beaches-in-netherlands-to-go-crazy-wild",
-  },
-  {
-    title: "10 Best Beaches In",
-    text: "10-best-beaches-in-netherlands-to-go-crazy-wild",
-  },
-  {
-    title: "10 Best Beaches In",
-    text: "10-best-beaches-in-netherlands-to-go-crazy-wild",
-  },
-  {
-    title: "10 Best Beaches In",
-    text: "10-best-beaches-in-netherlands-to-go-crazy-wild",
-  },
-  {
-    title: "10 Best Beaches In",
-    text: "10-best-beaches-in-netherlands-to-go-crazy-wild",
-  },
-  {
-    title: "10 Best Beaches In",
-    text: "10-best-beaches-in-netherlands-to-go-crazy-wild",
-  },
+function openHistoryModal() {
+  historyModal.classList.add("history-modal-active");  
+  isHistoryModalOpen = true;
+}
 
-]
+function closeHistoryModal() {
+  historyModal.classList.remove("history-modal-active"); 
+  isHistoryModalOpen = false; 
+}
+
+let historyData = [];
 
 function createHistoryItem({title, text}) {
-
-  console.log(title);
-
   const li = document.createElement("li");
 
   li.classList.add("history-modal_row")
@@ -122,13 +105,20 @@ function createHistoryItem({title, text}) {
   return li;
 }
 
-// historyModalList
+function renderHistory() {
+  historyModalList.innerHTML = '';
 
-historyData.map(function(data) {
+  historyData.map(function(data) {
   historyModalList.append(createHistoryItem(data));
+  })
+}
 
-  // console.log(data);
+document.body.addEventListener("keydown", function(e) {
+  if(e.keyCode === 27 && isHistoryModalOpen) {
+    closeHistoryModal();
+    animate();
+  }
+
 })
 
 
-console.log(historyModalList);

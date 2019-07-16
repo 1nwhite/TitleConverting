@@ -18,6 +18,8 @@ const inputModal = document.querySelector("#input-modal");
 
 const modalInputField = document.querySelector(".input-modal-body_field");
 
+// const historyModalList = document.querySelector(".history-modal_list");
+
 
 function deleteSymbols(element) {
 
@@ -92,9 +94,8 @@ insertBtn.addEventListener('click', function(){
 })
 
 
-function getInputValue() {
+function inputHandler() {
 
-	console.log(modalInputField.value);
 	let titleRow = modalInputField.value.toLowerCase().trim(); 
 	outputOne.innerText = titleRow;
 
@@ -110,14 +111,44 @@ function getInputValue() {
 	hideInputModal();
 	clearInput();
 
+	addHistoryData();
+
+	renderHistory();
 }
 
-document.querySelector("#input-modal_btn--ok").addEventListener("click", getInputValue);
+function addHistoryData() {
+
+	const titleValue = outputOne.innerText;
+	const textValue = outputTwo.innerText;
+
+	let data = {
+		title: trimTitle(titleValue),
+		text: textValue,
+	}
+
+	historyData.push(data);
+}
+
+function trimTitle(str) {
+
+	let arr = str.split(" ");
+	let newArr = [];
+
+	for(let i = 0; i < 4; i++) {
+
+		newArr.push(arr[i]);
+	}
+
+	return newArr.join(' ');
+} 
+
+document.querySelector("#input-modal_btn--ok").addEventListener("click", inputHandler);
 
 function hideInputModal() {
 
 	inputModal.classList.remove("input-modal-actvie");
 
+	modalInputField.blur();
 	clearInput();
 }
 
@@ -129,14 +160,15 @@ modalInputField.addEventListener("keydown", function(e) {
 	}
 
 	if(e.keyCode === 13) {
-		getInputValue()
+		inputHandler()
 	}
 
 })
 
 function clearInput() {
-
-	modalInputField.value = '';
+	if(!isModalOpen) {
+		modalInputField.value = '';
+	}
 }
 
 function removeModal() {
@@ -268,4 +300,4 @@ function getRandomNumber(arr) {
 }
 
 
-
+// HISTORY-MODAL
