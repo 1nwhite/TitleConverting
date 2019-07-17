@@ -25,6 +25,29 @@ input::placeholder {
 .disable-click {
 	pointer-events: none;
 }
+.overlay {
+	position: absolute;
+	z-index: 4;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #878787;
+	opacity: 0.5;
+}
+.drag-row {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2rem;
+	cursor: grab;
+}
+.no-transition {
+	transition: none !important;
+}
 
 .zindex {
 	z-index: 1;
@@ -503,17 +526,23 @@ input::placeholder {
 
 /*HISTORY-MODAL*/
 .history-modal {
+	position: fixed;
 	height: 20rem;
-	top: 20rem;
+	top: 35%;
+	left: calc(50% - 275px);
 	padding: 1.5rem;
 	text-align: center;
 	opacity: 0;
+	margin: 0;
 	transform: scale(0);
+	transition: 0;
+	transform-origin: top;
 }
 
 .history-modal-active {
 	opacity: 1;
-	transform: scale(1);
+	transform: scale(1)
+	
 }
 
 .history-modal_title {

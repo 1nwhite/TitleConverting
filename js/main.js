@@ -18,6 +18,10 @@ const inputModal = document.querySelector("#input-modal");
 
 const modalInputField = document.querySelector(".input-modal-body_field");
 
+const body = document.querySelector("body");
+
+let overlay = '';
+
 // const historyModalList = document.querySelector(".history-modal_list");
 
 
@@ -95,6 +99,8 @@ insertBtn.addEventListener('click', function(){
 
 	modalInputField.focus();
 
+	createOverlay();
+
 })
 
 
@@ -154,6 +160,7 @@ function hideInputModal() {
 
 	modalInputField.blur();
 	clearInput();
+	removeOverlay()
 }
 
 document.querySelector("#input-modal_btn--cancel").addEventListener("click", hideInputModal);
@@ -303,5 +310,22 @@ function getRandomNumber(arr) {
 	return Math.floor(Math.random() * arr.length);
 }
 
+function createOverlay() {
 
-// HISTORY-MODAL
+	overlay = document.createElement("div");
+	overlay.classList.add("overlay");
+	body.append(overlay);
+
+	return overlay;
+}
+
+function removeOverlay() {
+
+	body.removeChild(overlay);
+}
+// HISTORY-MODAL-coping
+historyModalList.addEventListener("click", function(e){
+	const convertedTitle = e.target.parentNode.querySelector(".history-modal_copy-title");
+
+	navigator.clipboard.writeText(convertedTitle.innerText);
+})
