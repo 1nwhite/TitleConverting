@@ -106,24 +106,30 @@ insertBtn.addEventListener('click', function(){
 
 function inputHandler() {
 
-	let titleRow = modalInputField.value.toLowerCase().trim(); 
-	outputOne.innerText = titleRow;
+	if(!modalInputField.value){
+		console.log('BE');
+	} else {
+		let titleRow = modalInputField.value.toLowerCase().trim(); 
+		outputOne.innerText = titleRow;
 
-	let deleteSymbolsResult = titleRow.split('').filter(deleteSymbols);
-	let resultReplaceSpace = replaceSpace(deleteSymbolsResult);
+		let deleteSymbolsResult = titleRow.split('').filter(deleteSymbols);
+		let resultReplaceSpace = replaceSpace(deleteSymbolsResult);
+
+		
+
+		let checkDashResult = checkDash(resultReplaceSpace).join("");
+
+		outputTwo.innerText = checkDashResult;
+
+		hideInputModal();
+		clearInput();
+
+		addHistoryData();
+
+		renderHistory();
+	}
 
 	
-
-	let checkDashResult = checkDash(resultReplaceSpace).join("");
-
-	outputTwo.innerText = checkDashResult;
-
-	hideInputModal();
-	clearInput();
-
-	addHistoryData();
-
-	renderHistory();
 }
 
 function addHistoryData() {
@@ -325,7 +331,22 @@ function removeOverlay() {
 }
 // HISTORY-MODAL-coping
 historyModalList.addEventListener("click", function(e){
-	const convertedTitle = e.target.parentNode.querySelector(".history-modal_copy-title");
+	const li = e.target.parentNode
+
+	const convertedTitle = li.querySelector(".history-modal_copy-title");
+
+	if(!convertedTitle) {
+		return;
+	}
 
 	navigator.clipboard.writeText(convertedTitle.innerText);
+
+	const historyCopyModal = li.querySelector(".history-copy-modal");
+	historyCopyModal.classList.add("history-copy-modal-active");
+
+	setTimeout(function() {
+		historyCopyModal.classList.remove("history-copy-modal-active")
+	}, 1000)
 })
+
+

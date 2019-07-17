@@ -22,6 +22,9 @@ button:focus {
 input::placeholder {
 	font-family: 'Josefin Sans', sans-serif;
 }
+.filter {
+	filter: opacity(0.6);
+}
 .disable-click {
 	pointer-events: none;
 }
@@ -592,7 +595,7 @@ input::placeholder {
 	top: 25%;
 	text-transform: uppercase;
 	border: none;
-	background: url(img/copy.svg) no-repeat;
+	background: url(img/copy.svg);
 	display: inline-block;
 	width: 30px;
 	height: 30px;
@@ -749,4 +752,22 @@ input::placeholder {
   to {
     opacity: 1;
   }
+}
+
+/* history-copy-modal */
+.history-copy-modal {
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	right: 0;
+	transform: translate(-5px, 5px) scale(0);
+	transition: all ease 0.3s;
+	/* opacity: 0; */
+	
+}
+.history-copy-modal-active {
+	transform: translate(-5px, 5px) scale(1);
+}
+.history-copy-modal img {
+	width: 35px;
 }

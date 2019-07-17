@@ -100,6 +100,8 @@ function createHistoryItem({title, text}) {
    <h4 class="history-modal_insert-title">${title}</h4>
     <p class="history-modal_copy-title">${text}</p>
     <button class="history-modal_copy-btn "></button>
+    <div class="history-copy-modal"><img src="img/check-mark.png" alt=""></div>
+   
   `
 
   return li;

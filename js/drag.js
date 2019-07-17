@@ -1,47 +1,62 @@
 
-// set default coords when we clicked first time
-const setDefaultPosition = (event, element, callback) => {
-  if (element.style.position !== "absolute") {
-    element.style.position = "absolute";
-    element.style.zIndex = 1000;
-    element.addEventListener("dragstart", e => e.preventDefault());
-  }
-  element.classList.add("no-transition");
-  document.body.append(element);
-  callback(event);
-};
+class DragNDropElement {
+  constructor(element, targetClass) {
+    this.element = element;
+    this.targetClass = targetClass;
 
-// get elemts coordinates (top, left regarding document.body; element => app)
-const getCoords = element => {
-  const { top, left } = element.getBoundingClientRect();
-  return {
-    top: pageYOffset + top,
-    left: pageXOffset + left
-  };
-};
-
-// main function
-const startDragging = e => {
-  if (!e.target.classList.contains("drag-row")) {
-    return;
+    this.draggingHandler(this.element, this.targetClass);
   }
 
-  const coords = getCoords(historyModal);
-  const shiftX = e.pageX - coords.left;
-  const shiftY = e.pageY - coords.top;
+  draggingHandler(app, targetClass) {
+    // set default coords when we clicked first time
+    const setDefaultPosition = (event, element, callback) => {
+      if (element.style.position !== "absolute") {
+        element.style.position = "absolute";
+        element.style.zIndex = 3;
+        element.addEventListener("dragstart", e => e.preventDefault());
+      }
+      document.body.append(element);
+      element.classList.add("no-transition");
+      callback(event);
+    };
 
-  const moveAt = e => {
-    historyModal.style.top = `${e.pageY - shiftY}px`;
-    historyModal.style.left = `${e.pageX - shiftX}px`;
-  };
+    // get elemts coordinates (top, left regarding document.body; element => app)
+    const getCoords = element => {
+      const { top, left } = element.getBoundingClientRect();
+      return {
+        top: pageYOffset + top,
+        left: pageXOffset + left
+      };
+    };
 
-  setDefaultPosition(e, historyModal, moveAt);
-  document.addEventListener("mousemove", moveAt);
+    // main function
+    const startDragging = e => {
+      if (!e.target.classList.contains(targetClass)) {
+        return;
+      }
 
-  historyModal.addEventListener("mouseup", () => {
-    historyModal.classList.remove("no-transition");
-    document.removeEventListener("mousemove", moveAt);
-  });
-};
+      const coords = getCoords(app);
+      const shiftX = e.pageX - coords.left;
+      const shiftY = e.pageY - coords.top;
 
-historyModal.addEventListener("mousedown", startDragging);
+      const moveAt = e => {
+        app.style.top = `${e.pageY - shiftY}px`;
+        app.style.left = `${e.pageX - shiftX}px`;
+      };
+
+      setDefaultPosition(e, app, moveAt);
+      document.addEventListener("mousemove", moveAt);
+
+      app.addEventListener("mouseup", () => {
+        document.removeEventListener("mousemove", moveAt);
+        app.classList.remove("no-transition");
+      });
+    };
+
+    app.addEventListener("mousedown", startDragging);
+  }
+}
+
+new DragNDropElement(historyModal, "drag-row");
+
+new DragNDropElement(document.querySelector(".converting-block"), "converting-block-body_output")
